@@ -1,0 +1,106 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #ff6347;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header .main-title {
+    font-size: 2.5em;
+    margin: 0;
+}
+
+header select , header button{
+    background-color: #ff6347;
+    border-radius: 20px;
+    padding: 10px;
+    color: #fff;
+}
+
+
+
+
+main .type-cuisine {
+    width: 80%;
+    margin: 30px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+main .type-title {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff6347;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+main .plats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+main .box {
+    width: 30%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+main .box:hover {
+    transform: scale(1.05);
+}
+
+main .plat-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+main .plat-title {
+    font-size: 1.5em;
+    color: #333;
+    margin: 15px 0 5px;
+}
+
+main .plat-category {
+    font-size: 1em;
+    color: #777;
+}
+
+main .plat-price {
+    font-size: 1.3em;
+    color: #ff6347;
+    margin: 10px 0;
+}
+
+main .commander-btn {
+    background-color: #ff6347;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+main .commander-btn:hover {
+    background-color: #e5533d;
+}
