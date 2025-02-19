@@ -1,33 +1,24 @@
 <?php
 $boxs = "";
 require("config.php");
-if(isset($_POST["search"])){
+if(isset($_POST["search"]) && (!empty($_POST["type_s"]) || !empty($_POST["categorie_s"]))){
     $type_s = $_POST["type_s"];
     $categorie_s = $_POST["categorie_s"];
-}
-else{
-    $type_s = "";
-    $categorie_s = "";
-}
-if(!empty($type_s) || !empty($categorie_s)){
     if(!empty($type_s) && !empty($categorie_s)){
         $sql = "SELECT * FROM plat WHERE TypeCuisine = :type_s AND categoriePlat = :categorie_s";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':type_s', $type_s);
         $stmt->bindParam(':categorie_s', $categorie_s);
-        $stmt->execute();
-        
     }else if(!empty($type_s)){
         $sql = "SELECT * FROM plat WHERE TypeCuisine = :type_s";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':type_s', $type_s);
-        $stmt->execute();
     }else{
         $sql = "SELECT * FROM plat WHERE categoriePlat = :categorie_s";
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':categorie_s', $categorie_s);
-        $stmt->execute();
     }
+    $stmt->execute();
 }else{
     $sql = "SELECT * FROM plat";
     $stmt = $pdo->query($sql);
