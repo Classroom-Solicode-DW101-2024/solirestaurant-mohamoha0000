@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mar. 18 fév. 2025 à 16:33
--- Version du serveur : 10.4.28-MariaDB
--- Version de PHP : 8.2.4
+-- Généré le : mer. 19 fév. 2025 à 22:54
+-- Version du serveur : 10.4.32-MariaDB
+-- Version de PHP : 8.0.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -63,7 +63,7 @@ CREATE TABLE `commande` (
   `dateCmd` datetime DEFAULT current_timestamp(),
   `Statut` varchar(100) DEFAULT 'en attente',
   `idCl` int(11) DEFAULT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `commande`
@@ -121,7 +121,7 @@ CREATE TABLE `plat` (
   `TypeCuisine` varchar(250) NOT NULL,
   `prix` decimal(6,2) NOT NULL,
   `image` varchar(500) NOT NULL
-) ;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Déchargement des données de la table `plat`
@@ -150,7 +150,8 @@ INSERT INTO `plat` (`idPlat`, `nomPlat`, `categoriePlat`, `TypeCuisine`, `prix`,
 (37, 'Rouleaux de Printemps', 'entrée', 'Chinoise', 5.99, 'https://img.cuisineaz.com/1024x576/2018/01/17/i135088-rouleau-de-printemps.webp'),
 (38, 'Soupe Aigre-Douce', 'entrée', 'Chinoise', 6.99, 'https://www.la-viande.fr/sites/default/files/styles/slider_recettes/public/recettes/images/soupe-aigre-douce-chinoise-au-chevreau.jpg?itok=SLa5WzO6'),
 (39, 'Gyoza', 'entrée', 'Chinoise', 7.49, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ZCE9uPWOv3g-gbpx_xCq3xTbdhZgD72c3g&s'),
-(40, 'La Tartiflette.', 'plat principal', 'Francaise', 7.49, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwoJzeDgpE3alNWl6yc6ei6rYGv5EBUTr5svesrE6a8Mehb8O5vdkg_BclSbk1cTfbVMOfH-esLB7oiDpjJEvL9epEC_7LnJmeDAXDGjw');
+(40, 'La Tartiflette.', 'plat principal', 'Francaise', 7.49, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwoJzeDgpE3alNWl6yc6ei6rYGv5EBUTr5svesrE6a8Mehb8O5vdkg_BclSbk1cTfbVMOfH-esLB7oiDpjJEvL9epEC_7LnJmeDAXDGjw'),
+(41, 'Easy Crêpes', 'dessert', 'Francaise', 10.49, 'https://hips.hearstapps.com/hmg-prod/images/crepes-1647543674.jpeg?crop=0.9993197278911565xw:1xh;center,top&resize=980:*');
 
 --
 -- Index pour les tables déchargées
@@ -191,7 +192,7 @@ ALTER TABLE `plat`
 -- AUTO_INCREMENT pour la table `plat`
 --
 ALTER TABLE `plat`
-  MODIFY `idPlat` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idPlat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- Contraintes pour les tables déchargées
