@@ -8,9 +8,12 @@ body {
 header {
     background-color: #ff6347;
     color: white;
-    padding: 20px 0;
+    padding: 20px;
     text-align: center;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 header .main-title {
@@ -18,14 +21,25 @@ header .main-title {
     margin: 0;
 }
 
-header select , header button{
+header form select , header form button{
     background-color: #ff6347;
     border-radius: 20px;
     padding: 10px;
     color: #fff;
 }
-
-
+header div{
+    display: flex;
+    align-items: center;
+}
+header div button{
+    background-color: #eeff00;
+    padding: 5px 10px 5px 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+}
 
 
 main .type-cuisine {

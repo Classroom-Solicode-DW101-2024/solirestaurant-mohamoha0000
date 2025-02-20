@@ -57,7 +57,7 @@ if (count($rows)>0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restorant</title>
-    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
     <header>
@@ -79,7 +79,11 @@ if (count($rows)>0){
            </select>
            <button name="search" >search</button>
         </form>
-        
+        <div>
+            <button>log in</button>
+            <a href="panier.php"><img src="img/panie.png" alt="" width="50px" height="50px"></a>
+            <span>0</span>
+        </div>
     </header>
     <main>
         <?= $boxs ?>
@@ -88,5 +92,6 @@ if (count($rows)>0){
         document.getElementById("type_s").value="<?php echo $type_s; ?>";
         document.getElementById("categorie_s").value="<?php echo $categorie_s; ?>";
     </script>
+    <script src="script.js"></script>
 </body>
 </html>
