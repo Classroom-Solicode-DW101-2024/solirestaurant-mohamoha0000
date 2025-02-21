@@ -1,4 +1,5 @@
 <?php
+session_start();
 $host ='localhost';
 $dbname ='solirestaurant';
 $username ='root';
@@ -29,16 +30,12 @@ global $pdo;
 
 function tel_existe($tel){
     global $pdo;
-    $sql = "SELECT telCl FROM client where telCl=:tel";
+    $sql = "SELECT * FROM client where telCl=:tel";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(':tel', $tel);
     $stmt->execute();
     $rusult = $stmt->fetch(PDO::FETCH_ASSOC);
-    if(empty($rusult)){
-        return false;
-    }else{
-       return true;
-    }
+    return $rusult;
 }
 
 ?>

@@ -5,8 +5,9 @@ if(isset($_POST["btnSubmit"] )){
     $nom=trim($_POST["nom"]);
     $prenom=trim($_POST["prenom"]);
     $tel=trim($_POST["tel"]);
-    $tel_is_exiset=tel_existe($tel);
-    if(!empty($nom) && !empty($prenom) && !empty($tel) && !$tel_is_exiset){
+    $tel_is_exist=tel_existe($tel);
+    var_dump( $tel_is_exist);
+    if(!empty($nom) && !empty($prenom) && !empty($tel) && empty($tel_is_exist)){
      $sql_insert_client="insert into CLIENT  values(:id,:nom,:prenom,:tel)";
      $stmt_insert_client=$pdo->prepare($sql_insert_client);
     $idvalue=getLastIdClient()+1;
@@ -29,7 +30,7 @@ if(isset($_POST["btnSubmit"] )){
         if(empty($tel)){
             $erreurs['tel']="remplir le tel";
         }
-        if($tel_is_exiset){
+        if(!empty($tel_is_exist)){
             $erreurs['tel']="tel is duplique";
         }
     }
@@ -52,9 +53,10 @@ if(isset($_POST["btnSubmit"] )){
         <label for="prenom">Entrez votre prénom</label>
         <input type="text" name="prenom" id="prenom">
         <label for="numTel">Entrez votre numéro de téléphone</label>
-        <input type="tel" name="tel" id="numTel">
+        <input type="tel" name="tel" id="numTel" >
         <button name="btnSubmit">Je m'inscris!</button>
     </form>
+    <a href="login.php">log in</a>
     <?php
     if(count($erreurs)>0){
         foreach($erreurs as $key=>$erreur){
