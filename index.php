@@ -1,6 +1,10 @@
 <?php
 $boxs = "";
 require("config.php");
+
+if(!isset($_SESSION["client"])){
+    header("Location:login.php");
+}
 if(isset($_POST["search"]) && (!empty($_POST["type_s"]) || !empty($_POST["categorie_s"]))){
     $type_s = $_POST["type_s"];
     $categorie_s = $_POST["categorie_s"];
@@ -57,7 +61,7 @@ if (count($rows)>0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restorant</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=0">
 </head>
 <body>
     <header>
@@ -80,7 +84,7 @@ if (count($rows)>0){
            <button name="search" >search</button>
         </form>
         <div>
-            <button>log in</button>
+            <button>log out</button>
             <a href="panier.php"><img src="img/panie.png" alt="" width="50px" height="50px"></a>
             <span>0</span>
         </div>
