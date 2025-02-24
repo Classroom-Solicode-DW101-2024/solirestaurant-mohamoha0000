@@ -1,0 +1,85 @@
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff3e0; /* Fond doux */
+    font-family: Arial, sans-serif;
+}
+
+form {
+    background: #ff9800; /* Fond orange */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form label {
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+form input {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 5px;
+    font-size: 16px;
+}
+
+form input:focus {
+    outline: 2px solid #ff5722; /* Orange foncé */
+}
+
+form button {
+    background: #e65100;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+    margin-top: 15px;
+    transition: background 0.3s ease;
+}
+
+form button:hover {
+    background: #bf360c;
+}
+
+a {
+    text-decoration: none;
+    width: 100%;
+    max-width: 300px;
+}
+
+a button {
+    background: #ffcc80;
+    color: #e65100;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+a button:hover {
+    background: #ffb74d;
+}
+
+.erreur {
+    color: red;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 5px;
+}

@@ -6,7 +6,6 @@ if(isset($_POST["btnSubmit"] )){
     $prenom=trim($_POST["prenom"]);
     $tel=trim($_POST["tel"]);
     $tel_is_exist=tel_existe($tel);
-    var_dump( $tel_is_exist);
     if(!empty($nom) && !empty($prenom) && !empty($tel) && empty($tel_is_exist)){
      $sql_insert_client="insert into CLIENT  values(:id,:nom,:prenom,:tel)";
      $stmt_insert_client=$pdo->prepare($sql_insert_client);
@@ -44,7 +43,7 @@ if(isset($_POST["btnSubmit"] )){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="register.css">
 </head>
 <body>
     <form  method="POST" >
@@ -55,14 +54,13 @@ if(isset($_POST["btnSubmit"] )){
         <label for="numTel">Entrez votre numéro de téléphone</label>
         <input type="tel" name="tel" id="numTel" >
         <button name="btnSubmit">Je m'inscris!</button>
-    </form>
-    <a href="login.php">log in</a>
-    <?php
+        <a href="login.php"> <button type="button">log in</button></a>
+        <?php
     if(count($erreurs)>0){
         foreach($erreurs as $key=>$erreur){
             echo "<span class='erreur'>".$erreur."</span><br>";
         }
-    }
-    ?>
+    }?>
+    </form>
 </body>
 </html>

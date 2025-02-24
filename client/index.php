@@ -1,9 +1,13 @@
 <?php
 $boxs = "";
-require("config.php");
+require("page/config.php");
 
 if(!isset($_SESSION["client"])){
-    header("Location:login.php");
+    header("Location:page/login.php");
+}
+if(isset($_GET["login"])){
+    session_destroy();
+    header("Location:page/login.php");
 }
 if(isset($_POST["search"]) && (!empty($_POST["type_s"]) || !empty($_POST["categorie_s"]))){
     $type_s = $_POST["type_s"];
@@ -84,7 +88,7 @@ if (count($rows)>0){
            <button name="search" >search</button>
         </form>
         <div>
-            <button>log out</button>
+            <a href="index.php?login=out"><button>log out</button></a>
             <a href="panier.php"><img src="img/panie.png" alt="" width="50px" height="50px"></a>
             <span>0</span>
         </div>
@@ -96,6 +100,6 @@ if (count($rows)>0){
         document.getElementById("type_s").value="<?php echo $type_s; ?>";
         document.getElementById("categorie_s").value="<?php echo $categorie_s; ?>";
     </script>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
 </body>
 </html>
