@@ -48,11 +48,11 @@ if(isset($_POST["btnSubmit"] )){
 <body>
     <form  method="POST" >
         <label for="nom">Entrez votre nom:</label>
-        <input type="text" name="nom" id="nom">
+        <input type="text" name="nom" id="nom" <?php if(isset($_POST["nom"]) && !isset($erreurs["nom"])) echo "value='".$_POST['nom']."'"; ?> >
         <label for="prenom">Entrez votre prénom</label>
-        <input type="text" name="prenom" id="prenom">
+        <input type="text" name="prenom" id="prenom" <?php if(isset($_POST["prenom"]) && !isset($erreurs["prenom"])) echo "value='".$_POST['prenom']."'"; ?> >
         <label for="numTel">Entrez votre numéro de téléphone</label>
-        <input type="tel" name="tel" id="numTel" >
+        <input type="tel" name="tel" id="numTel" <?php if(isset($_POST["tel"]) && !isset($erreurs["tel"])) echo "value='".$_POST['tel']."'"; ?> >
         <button name="btnSubmit">Je m'inscris!</button>
         <a href="login.php"> <button type="button">log in</button></a>
         <?php
