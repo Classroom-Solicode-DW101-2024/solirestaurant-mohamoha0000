@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : mer. 19 fév. 2025 à 22:54
--- Version du serveur : 10.4.32-MariaDB
--- Version de PHP : 8.0.30
+-- Généré le : mar. 25 fév. 2025 à 10:11
+-- Version du serveur : 10.4.28-MariaDB
+-- Version de PHP : 8.2.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -50,7 +50,11 @@ INSERT INTO `client` (`idClient`, `nomCl`, `prenomCl`, `telCl`) VALUES
 (9, 'Naciri', 'Karim', '0609876543'),
 (10, 'Qassimi', 'Ahmed', '0654321098'),
 (11, 'El Alaoui', 'Fatima', '0619876543'),
-(12, 'Mekouar', 'Nour', '0687654321');
+(12, 'Mekouar', 'Nour', '0687654321'),
+(13, 'meayouf', 'mohamed', '56565'),
+(14, 'meayouf', 'mohamed', '064657615'),
+(15, 'meayouf', 'mohamed', '55555'),
+(16, 'meayouf', 'mohamed', '75657');
 
 -- --------------------------------------------------------
 
@@ -63,7 +67,7 @@ CREATE TABLE `commande` (
   `dateCmd` datetime DEFAULT current_timestamp(),
   `Statut` varchar(100) DEFAULT 'en attente',
   `idCl` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Déchargement des données de la table `commande`
@@ -121,37 +125,37 @@ CREATE TABLE `plat` (
   `TypeCuisine` varchar(250) NOT NULL,
   `prix` decimal(6,2) NOT NULL,
   `image` varchar(500) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ;
 
 --
 -- Déchargement des données de la table `plat`
 --
 
 INSERT INTO `plat` (`idPlat`, `nomPlat`, `categoriePlat`, `TypeCuisine`, `prix`, `image`) VALUES
-(4, 'Kefta Mkaouara', 'plat principal', 'Marocaine', 8.49, 'https://tasteofmaroc.com/wp-content/uploads/2018/02/kefta-tagine-oysy-bigstock-kofta-tajine-kefta-tagine-mo-65105917.jpg'),
-(5, 'Mechoui', 'plat principal', 'Marocaine', 13.49, 'https://www.tangeraccueil.org/local/cache-vignettes/L600xH368/evenementon1957-17b12.jpg?1619980398'),
-(6, 'Rfissa', 'plat principal', 'Marocaine', 12.49, 'https://patisseriegato.ma/wp-content/uploads/2023/08/rfissa-marocaine.webp'),
-(7, 'Pastilla au Poulet', 'entrée', 'Marocaine', 11.99, 'https://www.sousou-kitchen.com/wp-content/uploads/2015/05/Pastilla-au-poulet..jpg'),
-(8, 'Salade Marocaine', 'entrée', 'Marocaine', 4.99, 'https://abattoirdebondy.fr/wp-content/uploads/2020/10/bcdeb661911e43b996ca17953be67c83.jpg'),
-(9, 'Briouates', 'entrée', 'Marocaine', 6.99, 'https://www.hervecuisine.com/wp-content/uploads/2016/11/recette-briouates-poulet.jpg'),
-(10, 'Harira', 'entrée', 'Marocaine', 5.99, 'https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/02/harira-recette-marocaine-1.jpg'),
-(21, 'Paella', 'plat principal', 'Espagnole', 14.99, 'https://themediterraneanchick.com/wp-content/uploads/2020/09/IMG_0825-1-scaled.jpg'),
-(22, 'Fideuà', 'plat principal', 'Espagnole', 13.49, 'https://imag.bonviveur.com/fideua-de-pescado-y-marisco.jpg'),
-(23, 'Risotto aux Champignons', 'plat principal', 'Italienne', 12.99, 'https://m1.zeste.ca/serdy-m-dia-inc/image/upload/f_auto/fl_lossy/q_auto:eco/x_0,y_699,w_2721,h_1530,c_crop/w_1200,h_630,c_fill/v1541705178/foodlavie/prod/recettes/risotto-aux-champignons-4b5bce42'),
-(24, 'Lasagnes', 'plat principal', 'Italienne', 11.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVhEF4ZxEU_LgV0CefrC5eb5iQRU039NDtCA&s'),
-(27, 'Canard Laqué', 'plat principal', 'Chinoise', 16.99, 'https://images.squarespace-cdn.com/content/v1/532d9b45e4b0ff70f47a1674/1518795186833-PBID1LBYMIOSPCO41MOX/Canard+Laqu%C3%A9+Cyril+Rouquet-Pr%C3%A9vost'),
-(28, 'Bœuf Sauté aux Légumes', 'plat principal', 'Chinoise', 12.99, 'https://m1.zeste.ca/serdy-m-dia-inc/image/upload/f_auto/fl_lossy/q_auto:eco/x_0,y_0,w_1279,h_720,c_crop/w_1200,h_630,c_scale/v1642452008/foodlavie/prod/articles/top-recettes-de-saute-de-boeuf-27ca7e85'),
-(29, 'Dim Sum', 'plat principal', 'Chinoise', 10.99, 'https://cdn.britannica.com/55/234755-050-ED5FBC23/dim-sum-chopsticks.jpg'),
-(30, 'Chow Mein', 'plat principal', 'Chinoise', 11.99, 'https://s.lightorangebean.com/media/20240914164843/chow-mein-fun-done.png'),
-(31, 'Gazpacho', 'entrée', 'Espagnole', 5.99, 'https://castey.com/wp-content/uploads/2024/08/1-3.jpg'),
-(32, 'Tapas Variés', 'entrée', 'Espagnole', 7.49, 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tapas_01.jpg/420px-Tapas_01.jpg'),
-(33, 'Bruschetta', 'entrée', 'Italienne', 6.99, 'https://saratogaoliveoil.com/cdn/shop/articles/TomatoBruchetta-300x250.jpg?v=1663185079'),
-(34, 'Caprese', 'entrée', 'Italienne', 7.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuiNkkn-JbmLYL7TeBD3l7XNerf89TlNRAIg&s'),
-(37, 'Rouleaux de Printemps', 'entrée', 'Chinoise', 5.99, 'https://img.cuisineaz.com/1024x576/2018/01/17/i135088-rouleau-de-printemps.webp'),
-(38, 'Soupe Aigre-Douce', 'entrée', 'Chinoise', 6.99, 'https://www.la-viande.fr/sites/default/files/styles/slider_recettes/public/recettes/images/soupe-aigre-douce-chinoise-au-chevreau.jpg?itok=SLa5WzO6'),
-(39, 'Gyoza', 'entrée', 'Chinoise', 7.49, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ZCE9uPWOv3g-gbpx_xCq3xTbdhZgD72c3g&s'),
-(40, 'La Tartiflette.', 'plat principal', 'Francaise', 7.49, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwoJzeDgpE3alNWl6yc6ei6rYGv5EBUTr5svesrE6a8Mehb8O5vdkg_BclSbk1cTfbVMOfH-esLB7oiDpjJEvL9epEC_7LnJmeDAXDGjw'),
-(41, 'Easy Crêpes', 'dessert', 'Francaise', 10.49, 'https://hips.hearstapps.com/hmg-prod/images/crepes-1647543674.jpeg?crop=0.9993197278911565xw:1xh;center,top&resize=980:*');
+(4, 'Kefta Mkaouara', 'plat principal', 'Marocaine', 80.49, 'https://tasteofmaroc.com/wp-content/uploads/2018/02/kefta-tagine-oysy-bigstock-kofta-tajine-kefta-tagine-mo-65105917.jpg'),
+(5, 'Mechoui', 'plat principal', 'Marocaine', 130.49, 'https://www.tangeraccueil.org/local/cache-vignettes/L600xH368/evenementon1957-17b12.jpg?1619980398'),
+(6, 'Rfissa', 'plat principal', 'Marocaine', 120.49, 'https://patisseriegato.ma/wp-content/uploads/2023/08/rfissa-marocaine.webp'),
+(7, 'Pastilla au Poulet', 'entrée', 'Marocaine', 110.99, 'https://www.sousou-kitchen.com/wp-content/uploads/2015/05/Pastilla-au-poulet..jpg'),
+(8, 'Salade Marocaine', 'entrée', 'Marocaine', 40.99, 'https://abattoirdebondy.fr/wp-content/uploads/2020/10/bcdeb661911e43b996ca17953be67c83.jpg'),
+(9, 'Briouates', 'entrée', 'Marocaine', 60.99, 'https://www.hervecuisine.com/wp-content/uploads/2016/11/recette-briouates-poulet.jpg'),
+(10, 'Harira', 'entrée', 'Marocaine', 50.99, 'https://www.mesinspirationsculinaires.com/wp-content/uploads/2015/02/harira-recette-marocaine-1.jpg'),
+(21, 'Paella', 'plat principal', 'Espagnole', 140.99, 'https://themediterraneanchick.com/wp-content/uploads/2020/09/IMG_0825-1-scaled.jpg'),
+(22, 'Fideuà', 'plat principal', 'Espagnole', 130.49, 'https://imag.bonviveur.com/fideua-de-pescado-y-marisco.jpg'),
+(23, 'Risotto aux Champignons', 'plat principal', 'Italienne', 120.99, 'https://m1.zeste.ca/serdy-m-dia-inc/image/upload/f_auto/fl_lossy/q_auto:eco/x_0,y_699,w_2721,h_1530,c_crop/w_1200,h_630,c_fill/v1541705178/foodlavie/prod/recettes/risotto-aux-champignons-4b5bce42'),
+(24, 'Lasagnes', 'plat principal', 'Italienne', 110.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVhEF4ZxEU_LgV0CefrC5eb5iQRU039NDtCA&s'),
+(27, 'Canard Laqué', 'plat principal', 'Chinoise', 160.99, 'https://images.squarespace-cdn.com/content/v1/532d9b45e4b0ff70f47a1674/1518795186833-PBID1LBYMIOSPCO41MOX/Canard+Laqu%C3%A9+Cyril+Rouquet-Pr%C3%A9vost'),
+(28, 'Bœuf Sauté aux Légumes', 'plat principal', 'Chinoise', 120.99, 'https://m1.zeste.ca/serdy-m-dia-inc/image/upload/f_auto/fl_lossy/q_auto:eco/x_0,y_0,w_1279,h_720,c_crop/w_1200,h_630,c_scale/v1642452008/foodlavie/prod/articles/top-recettes-de-saute-de-boeuf-27ca7e85'),
+(29, 'Dim Sum', 'plat principal', 'Chinoise', 100.99, 'https://cdn.britannica.com/55/234755-050-ED5FBC23/dim-sum-chopsticks.jpg'),
+(30, 'Chow Mein', 'plat principal', 'Chinoise', 110.99, 'https://s.lightorangebean.com/media/20240914164843/chow-mein-fun-done.png'),
+(31, 'Gazpacho', 'entrée', 'Espagnole', 50.99, 'https://castey.com/wp-content/uploads/2024/08/1-3.jpg'),
+(32, 'Tapas Variés', 'entrée', 'Espagnole', 70.49, 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Tapas_01.jpg/420px-Tapas_01.jpg'),
+(33, 'Bruschetta', 'entrée', 'Italienne', 60.99, 'https://saratogaoliveoil.com/cdn/shop/articles/TomatoBruchetta-300x250.jpg?v=1663185079'),
+(34, 'Caprese', 'entrée', 'Italienne', 70.99, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuiNkkn-JbmLYL7TeBD3l7XNerf89TlNRAIg&s'),
+(37, 'Rouleaux de Printemps', 'entrée', 'Chinoise', 50.99, 'https://img.cuisineaz.com/1024x576/2018/01/17/i135088-rouleau-de-printemps.webp'),
+(38, 'Soupe Aigre-Douce', 'entrée', 'Chinoise', 60.99, 'https://www.la-viande.fr/sites/default/files/styles/slider_recettes/public/recettes/images/soupe-aigre-douce-chinoise-au-chevreau.jpg?itok=SLa5WzO6'),
+(39, 'Gyoza', 'entrée', 'Chinoise', 70.49, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7ZCE9uPWOv3g-gbpx_xCq3xTbdhZgD72c3g&s'),
+(40, 'La Tartiflette.', 'plat principal', 'Francaise', 70.49, 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSwoJzeDgpE3alNWl6yc6ei6rYGv5EBUTr5svesrE6a8Mehb8O5vdkg_BclSbk1cTfbVMOfH-esLB7oiDpjJEvL9epEC_7LnJmeDAXDGjw'),
+(41, 'Easy Crêpes', 'dessert', 'Francaise', 100.49, 'https://hips.hearstapps.com/hmg-prod/images/crepes-1647543674.jpeg?crop=0.9993197278911565xw:1xh;center,top&resize=980:*');
 
 --
 -- Index pour les tables déchargées
@@ -192,7 +196,7 @@ ALTER TABLE `plat`
 -- AUTO_INCREMENT pour la table `plat`
 --
 ALTER TABLE `plat`
-  MODIFY `idPlat` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `idPlat` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Contraintes pour les tables déchargées
