@@ -15,7 +15,11 @@ if(!isset($_SESSION["plats"])){
 if(isset($_GET["addplat"])){
        $plat = $_GET["addplat"];
        array_push($_SESSION["plats"], $plat);
-    
+}
+if(isset($_GET["rmplat"])){
+    $plat = $_GET["rmplat"];
+    $index = array_search($plat, $_SESSION["plats"]);
+    array_splice($_SESSION["plats"], $index,1);
 }
 if(isset($_POST["search"]) && (!empty($_POST["type_s"]) || !empty($_POST["categorie_s"]))){
     $type_s = $_POST["type_s"];
@@ -62,7 +66,7 @@ if (count($rows)>0){
             $boxs .= "<p class='plat-category'>" . $row['categoriePlat'] . "</p>";
             $boxs .= "<h2 class='plat-price'>" . $row['prix'] . " MAD</h2>";
             if (in_array($row["idPlat"],$_SESSION["plats"])){
-                $boxs .= "<a href='index.php?rmplat=".$row['idPlat']."'><button class='commander-btn remove-btn'>remove</button></a>";
+                $boxs .= "<a href='index.php?rmplat=".$row['idPlat']."#{$row['idPlat']}'><button class='commander-btn remove-btn'>remove</button></a>";
             }else{
                 $boxs .= "<a href='index.php?addplat=".$row['idPlat']."#{$row['idPlat']}'><button class='btn commander-btn'>Commander</button></a>";
             }
@@ -106,7 +110,7 @@ if (count($rows)>0){
         <div>
             <a href="index.php?login=out"><button>log out</button></a>
             <a href="panier.php"><img src="img/panie.png" alt="" width="50px" height="50px"></a>
-            <span>0</span>
+            <span><?= count($_SESSION["plats"]);?></span>
         </div>
     </header>
     <main>
