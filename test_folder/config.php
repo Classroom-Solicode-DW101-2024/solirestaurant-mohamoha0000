@@ -38,4 +38,24 @@ function tel_existe($tel){
     return $rusult;
 }
 
+
+function getdishesByType($type){
+    global $pdo;
+    $sql = "SELECT * FROM plat WHERE TypeCuisine=:type";
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(':type', $type);
+    $stmt->execute();
+    $rusult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $rusult;
+}
+
+function getKitchenType(){
+    global $pdo;
+    $sql = "SELECT distinct TypeCuisine  FROM plat ";
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+    $rusult = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $rusult;
+}
+
 ?>

@@ -84,7 +84,9 @@ main .box {
     overflow: hidden;
     transition: transform 0.3s;
 }
-
+main .box2{
+    border: 3px solid orange;
+}
 main .box:hover {
     transform: scale(1.05);
 }
@@ -113,7 +115,7 @@ main .plat-price {
     margin: 10px 0;
 }
 
-main .commander-btn {
+main a .commander-btn {
     background-color: #ff6347;
     color: white;
     border: none;
@@ -123,6 +125,10 @@ main .commander-btn {
     transition: background-color 0.3s;
 }
 
-main .commander-btn:hover {
+main a .commander-btn:hover {
     background-color: #e5533d;
+}
+
+main a .remove-btn{
+    background-color: green;
 }

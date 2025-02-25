@@ -9,6 +9,14 @@ if(isset($_GET["login"])){
     session_destroy();
     header("Location:page/login.php");
 }
+if(!isset($_SESSION["plats"])){
+    $_SESSION["plats"]=[];
+}
+if(isset($_GET["addplat"])){
+       $plat = $_GET["addplat"];
+       array_push($_SESSION["plats"], $plat);
+    
+}
 if(isset($_POST["search"]) && (!empty($_POST["type_s"]) || !empty($_POST["categorie_s"]))){
     $type_s = $_POST["type_s"];
     $categorie_s = $_POST["categorie_s"];
@@ -44,12 +52,20 @@ if (count($rows)>0){
         $boxs .= "<h1 class='type-title'>" . $typec . "</h1>";
         $boxs .= "<div class='plats-container'>";
         foreach ($rowc as $row) {
-            $boxs .= "<div class='box'>";
+            if (in_array($row["idPlat"],$_SESSION["plats"])){
+                $boxs .= "<div id='{$row['idPlat']}' class='box2 box'>";
+            }else{
+                $boxs .= "<div id='{$row['idPlat']}' class='box'>";
+            }
             $boxs .= "<img src='" . $row['image'] . "' alt='" . $row['nomPlat'] . "' class='plat-image'>";
             $boxs .= "<h2 class='plat-title'>" . $row['nomPlat'] . "</h2>";
             $boxs .= "<p class='plat-category'>" . $row['categoriePlat'] . "</p>";
             $boxs .= "<h2 class='plat-price'>" . $row['prix'] . " MAD</h2>";
-            $boxs .= "<button class='btn commander-btn'>Commander</button>";
+            if (in_array($row["idPlat"],$_SESSION["plats"])){
+                $boxs .= "<a href='index.php?rmplat=".$row['idPlat']."'><button class='commander-btn remove-btn'>remove</button></a>";
+            }else{
+                $boxs .= "<a href='index.php?addplat=".$row['idPlat']."#{$row['idPlat']}'><button class='btn commander-btn'>Commander</button></a>";
+            }
             $boxs .= "</div>";
         }
         $boxs .= "</div>";
@@ -65,7 +81,7 @@ if (count($rows)>0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restorant</title>
-    <link rel="stylesheet" href="style.css?v=0">
+    <link rel="stylesheet" href="style.css?v=1">
 </head>
 <body>
     <header>
