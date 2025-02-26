@@ -14,12 +14,16 @@ if(!isset($_SESSION["plats"])){
 }
 if(isset($_GET["addplat"])){
        $plat = $_GET["addplat"];
-       array_push($_SESSION["plats"], $plat);
+       if (!in_array($plat,$_SESSION["plats"])){
+          array_push($_SESSION["plats"], $plat);
+       }
 }
 if(isset($_GET["rmplat"])){
     $plat = $_GET["rmplat"];
-    $index = array_search($plat, $_SESSION["plats"]);
-    array_splice($_SESSION["plats"], $index,1);
+    if (in_array($plat,$_SESSION["plats"])){
+        $index = array_search($plat, $_SESSION["plats"]);
+        array_splice($_SESSION["plats"], $index,1);
+    }
 }
 if(isset($_POST["search"]) && (!empty($_POST["type_s"]) || !empty($_POST["categorie_s"]))){
     $type_s = $_POST["type_s"];
@@ -85,11 +89,11 @@ if (count($rows)>0){
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Restorant</title>
-    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
     <header>
-        <h1 class="main-title">Restaurant</h1>
+        <a href="index.php"><h1 class="main-title">Restaurant</h1></a>
         <form method="POST">
             <select name="type_s" id="type_s">
                 <option value="">Tous les types</option>
@@ -109,7 +113,7 @@ if (count($rows)>0){
         </form>
         <div>
             <a href="index.php?login=out"><button>log out</button></a>
-            <a href="panier.php"><img src="img/panie.png" alt="" width="50px" height="50px"></a>
+            <a href="page/panier.php"><img src="img/panie.png" alt="" width="50px" height="50px"></a>
             <span><?= count($_SESSION["plats"]);?></span>
         </div>
     </header>

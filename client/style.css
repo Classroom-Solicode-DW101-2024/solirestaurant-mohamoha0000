@@ -46,7 +46,10 @@ header div button{
     font-size: 1em;
     cursor: pointer;
 }
-
+header a{
+    text-decoration: none;
+    color: #fff;
+}
 main {
     margin-top: 6em;
 }
