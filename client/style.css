@@ -126,6 +126,7 @@ main a .commander-btn {
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s;
+    margin-bottom: 1em;
 }
 
 main a .commander-btn:hover {
@@ -135,3 +136,16 @@ main a .commander-btn:hover {
 main a .remove-btn{
     background-color: green;
 }
+
+
+footer {
+    background-color: #ff7700;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  .footer-container {
+    max-width: 800px;
+    margin: 0 auto;
+  }

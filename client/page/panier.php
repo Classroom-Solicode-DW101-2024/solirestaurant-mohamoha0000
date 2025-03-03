@@ -16,23 +16,20 @@ if(isset($_GET["action"]) && isset($_GET["id"])) {
     $id = $_GET["id"];
     switch($_GET["action"]) {
         case "remove":
-            if(in_array($id, $_SESSION["plats"])) {
-                $index = array_search($id, $_SESSION["plats"]);
-                array_splice($_SESSION["plats"], $index, 1);
-            }
+            unset($_SESSION["plats"][$id]);
             break;
         case "increase":
-            // Add the same plat ID again to increase quantity
-            array_push($_SESSION["plats"], $id);
+            $_SESSION["plats"][$id]++;
             break;
         case "decrease":
-            if(in_array($id, $_SESSION["plats"])) {
-                $index = array_search($id, $_SESSION["plats"]);
-                array_splice($_SESSION["plats"], $index, 1);
+            if($_SESSION["plats"][$id]==1) {
+               unset($_SESSION["plats"][$id]);
+            }else{
+                $_SESSION["plats"][$id]--;
             }
             break;
     }
-    header("Location:panier.php");
+    header("Location:panier.php#$id");
     exit();
 }
 
@@ -42,7 +39,7 @@ $total_price = 0;
 
 if(count($_SESSION["plats"]) > 0) {
     // Get unique plat IDs and their quantities
-    $plat_counts = array_count_values($_SESSION["plats"]);
+    $plat_counts = $_SESSION["plats"];
     
     // Prepare SQL to fetch all selected plats
     $placeholders = implode(',', array_fill(0, count(array_keys($plat_counts)), '?'));
@@ -58,7 +55,7 @@ if(count($_SESSION["plats"]) > 0) {
         $subtotal = $plat["prix"] * $quantity;
         $total_price += $subtotal;
         
-        $plats_content .= "<div class='cart-item'>";
+        $plats_content .= "<div id='{$plat['idPlat']}' class='cart-item'>";
         $plats_content .= "<img src='{$plat['image']}' alt='{$plat['nomPlat']}' class='cart-image'>";
         $plats_content .= "<div class='cart-details'>";
         $plats_content .= "<h2>{$plat['nomPlat']}</h2>";
