@@ -10,7 +10,27 @@ if(!isset($_SESSION["client"])) {
 if(!isset($_SESSION["plats"])) {
     $_SESSION["plats"] = [];
 }
-
+$valide=false;
+if(isset($_GET["valide"])){
+    $sql_insert_client="insert into commande (idCmd,idCl)  values(:idCmd,:idCl )";
+    $stmt_insert_client=$pdo->prepare($sql_insert_client);
+    $idcmd="c".(explode("c",getLastIdcmd())[1]+1);
+    $idcl=$_SESSION["client"]["idClient"];
+    $stmt_insert_client->bindParam(':idCmd',$idcmd);
+    $stmt_insert_client->bindParam(':idCl',$idcl);
+    $stmt_insert_client->execute();
+    foreach( $_SESSION["plats"] as $idplat => $quntite ) { 
+        $sql_insert_plat="insert into commande_plat (idPlat,idCmd,qte)
+        values(:idPlat,:idCmd,:qte)";
+        $stmt_insert_plat=$pdo->prepare($sql_insert_plat);
+        $stmt_insert_plat->bindParam(':idPlat',$idplat);
+        $stmt_insert_plat->bindParam(':idCmd',$idcmd);
+        $stmt_insert_plat->bindParam(':qte',$quntite);
+        $stmt_insert_plat->execute();
+    }
+    $valide=true;
+    $_SESSION["plats"] = [];
+}
 // Handle quantity modifications and removal
 if(isset($_GET["action"]) && isset($_GET["id"])) {
     $id = $_GET["id"];
@@ -74,9 +94,11 @@ if(count($_SESSION["plats"]) > 0) {
     $plats_content .= "</div>";
     $plats_content .= "<div class='cart-total'>";
     $plats_content .= "<h2>Total: {$total_price} MAD</h2>";
-    $plats_content .= "<button class='checkout-btn'>Passer la commande</button>";
+    $plats_content .= "<a href='panier.php?valide=1'><button class='checkout-btn'>Passer la commande</button></a>";
     $plats_content .= "</div>";
-} else {
+} else if($valide){
+    $plats_content .="<p class='empty-cart'>votre command bien ajouter!!! merciiii</p>";
+}else{
     $plats_content = "<p class='empty-cart'>Votre panier est vide</p>";
 }
 ?>

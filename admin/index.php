@@ -162,7 +162,7 @@ $filter = isset($_POST['filter']) ? $_POST['filter'] : 'today';
     $stmt = $pdo->prepare("SELECT COUNT(*) FROM commande WHERE Statut = 'annulée'");
     $stmt->execute();
     $totalCanceled = $stmt->fetchColumn();
-    
+
     $sql_plats = "SELECT p.nomPlat, SUM(cp.qte) as quantite 
                   FROM commande_plat cp 
                   JOIN plat p ON cp.idPlat = p.idPlat 

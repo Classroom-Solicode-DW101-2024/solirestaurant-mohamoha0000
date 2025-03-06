@@ -48,4 +48,8 @@ function tel_existe($tel){
     $rusult = $stmt->fetch(PDO::FETCH_ASSOC);
     return $rusult;
 }
+print_r(explode("c",getLastIdcmd()));
+echo getLastIdcmd();
+echo explode("c",getLastIdcmd())[1];
+echo "c".(explode("c",getLastIdcmd())[1]+1);
 ?> 
